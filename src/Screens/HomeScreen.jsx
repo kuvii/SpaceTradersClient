@@ -49,16 +49,28 @@ const HomeScreen = () => {
         </View>
         <View style={{...styles.stack, height: 200}}>
             <View style={styles.itemStack}>
-                <Image source={images.resources.spaceships} alt='shipCount' style={{height: 30, width: 30}} />
-                <Text style={{fontSize: 20}}> {userProfile.shipCount} </Text>
+                <View style={{...styles.itemStack, flex: 1}}>
+                    <Image source={images.resources.spaceships} alt='shipCount' style={{height: 30, width: 30}} />
+                </View>
+                <View style={{flex: 1}}>
+                    <Text style={{fontSize: 20}}> {userProfile.shipCount} </Text>
+                </View>
             </View>
             <View style={styles.itemStack}>
-                <Image source={images.resources.structures} alt='structureCount' style={{height: 30, width: 30}} />
-                <Text style={{fontSize: 20}}> {userProfile.structureCount} </Text>
+                <View style={{...styles.itemStack, flex: 1}}>
+                    <Image source={images.resources.structures} alt='structureCount' style={{height: 30, width: 30}} />
+                </View>
+                <View style={{flex: 1}}>
+                    <Text style={{fontSize: 20}}> {userProfile.structureCount} </Text>
+                </View>
             </View>
             <View style={styles.itemStack}>
-                <Image source={images.resources.joinedDate} alt='joinedAt' style={{height: 30, width: 30}} />
-                <Text style={{fontSize: 20}}> {userProfile.joinedAt.substring(0, 10)} </Text>
+                <View style={{...styles.itemStack, flex: 1}}>
+                    <Image source={images.resources.joinedDate} alt='joinedAt' style={{height: 30, width: 30}} />
+                </View>
+                <View style={{flex: 1}}>
+                    <Text style={{fontSize: 20}}> {userProfile.joinedAt.substring(0, 10)} </Text>
+                </View>
             </View>
         </View>
     </View>
