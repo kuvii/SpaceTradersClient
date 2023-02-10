@@ -18,10 +18,14 @@ const HomeScreen = () => {
 
     useEffect(() => {
         const fetchUserProfile = async () => {
-            const data = await getUserProfile()
-            setUserProfile(data.user)
-            if (userProfile.username.length >= 18){
-                setUserProfile({...userProfile, username: (username.substring(0, 15) + '...')})
+            try {
+                const data = await getUserProfile()
+                setUserProfile(data.user)
+                if (userProfile.username.length >= 18){
+                    setUserProfile({...userProfile, username: (username.substring(0, 15) + '...')})
+                }
+            } catch (error) {
+                console.error(error)
             }
         }
         fetchUserProfile()
@@ -51,6 +55,10 @@ const HomeScreen = () => {
             <View style={styles.itemStack}>
                 <Image source={images.resources.structures} alt='structureCount' style={{height: 30, width: 30}} />
                 <Text style={{fontSize: 20}}> {userProfile.structureCount} </Text>
+            </View>
+            <View style={styles.itemStack}>
+                <Image source={images.resources.joinedDate} alt='joinedAt' style={{height: 30, width: 30}} />
+                <Text style={{fontSize: 20}}> {userProfile.joinedAt.substring(0, 10)} </Text>
             </View>
         </View>
     </View>
