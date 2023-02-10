@@ -39,11 +39,16 @@ const HomeScreen = () => {
         </View>
         <View style={styles.credits}>
             <View style={{flexDirection: 'row'}}>
-                <Text style={{textAlign: 'center'}}>{userProfile.credits}</Text>
                 <Image source={images.resources.credits} alt='credits' style={{height: 20, width: 20}} />
+                <Text style={{textAlign: 'center'}}>{userProfile.credits}</Text>
             </View>
         </View>
-        <View style={{...styles.stack, height: 200}}></View>
+        <View style={{...styles.stack, height: 200}}>
+            <View style={styles.itemStack}>
+                <Image source={images.resources.spaceships} alt='credits' style={{height: 20, width: 20}} />
+                <Text> {userProfile.shipCount} </Text>
+            </View>
+        </View>
     </View>
   )
 }
@@ -77,6 +82,15 @@ let styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%'
+    },
+    itemStack: {
+        alignItems: 'center',
+        borderWidth: 0,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        height: 50,
+        margin: 0,
+        width: '100%',
     }
 })
 

@@ -3,6 +3,7 @@ export const images = {
         purpleAvatar: require('../../assets/avatars/slime_purple.png'),
     },
     resources: {
-        credits: require('../../assets/resources/manat.png')
+        credits: require('../../assets/resources/manat.png'),
+        spaceships: require('../../assets/resources/spaceship.png')
     }
 }
