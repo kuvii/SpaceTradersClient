@@ -2,9 +2,10 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { getUserProfile } from '../api/api'
 import { useEffect, useState } from 'react'
 
-import { images } from '../utils/images'
+import { images, getRandomAvatar } from '../utils/images'
 
 const initUserProfile = {
+    profileImage: null,
     credits: 0,
     joinedAt: '',
     shipCount: 0,
@@ -28,6 +29,7 @@ const HomeScreen = () => {
                 console.error(error)
             }
         }
+        
         fetchUserProfile()
     }, [])
 
@@ -35,7 +37,7 @@ const HomeScreen = () => {
     <View style={styles.center}>
         <View style={styles.row}>
             <View style={styles.avatarContainer}>
-                <Image source={images.avatars.purpleAvatar} alt='avatar' style={{height: '90%', width: '80%'}} />
+                <Image source={getRandomAvatar()} alt='avatar' style={{height: '90%', width: '80%'}} />
             </View>
             <View style={styles.usernameContainer}>
                 <Text style={{fontSize: 20}}>{userProfile.username}</Text>
