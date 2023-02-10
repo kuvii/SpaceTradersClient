@@ -2,14 +2,7 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { getUserProfile } from '../api/api'
 import { useEffect, useState } from 'react'
 
-const images = {
-    avatars: {
-        purpleAvatar: require('../../assets/avatars/slime_purple.png'),
-    },
-    resources: {
-        credits: require('../../assets/resources/manat.png')
-    }
-}
+import { images } from '../utils/images'
 
 const initUserProfile = {
     credits: 0,
