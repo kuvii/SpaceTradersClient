@@ -45,11 +45,11 @@ const HomeScreen = () => {
         </View>
         <View style={{...styles.stack, height: 200}}>
             <View style={styles.itemStack}>
-                <Image source={images.resources.spaceships} alt='credits' style={{height: 30, width: 30}} />
+                <Image source={images.resources.spaceships} alt='shipCount' style={{height: 30, width: 30}} />
                 <Text style={{fontSize: 20}}> {userProfile.shipCount} </Text>
             </View>
             <View style={styles.itemStack}>
-                <Image source={images.resources.structures} alt='credits' style={{height: 30, width: 30}} />
+                <Image source={images.resources.structures} alt='structureCount' style={{height: 30, width: 30}} />
                 <Text style={{fontSize: 20}}> {userProfile.structureCount} </Text>
             </View>
         </View>
