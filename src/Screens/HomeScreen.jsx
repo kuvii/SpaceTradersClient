@@ -43,8 +43,8 @@ const HomeScreen = () => {
         </View>
         <View style={styles.credits}>
             <View style={{flexDirection: 'row'}}>
-                <Image source={images.resources.credits} alt='credits' style={{height: 20, width: 20}} />
                 <Text style={{textAlign: 'center'}}>{userProfile.credits}</Text>
+                <Image source={images.resources.credits} alt='credits' style={{height: 20, width: 20}} />
             </View>
         </View>
         <View style={{...styles.stack, height: 200}}>
