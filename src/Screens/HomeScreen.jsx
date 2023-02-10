@@ -2,6 +2,15 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { getUserProfile } from '../api/api'
 import { useEffect, useState } from 'react'
 
+const images = {
+    avatars: {
+        purpleAvatar: require('../../assets/avatars/slime_purple.png'),
+    },
+    resources: {
+        credits: require('../../assets/resources/manat.png')
+    }
+}
+
 const initUserProfile = {
     credits: 0,
     joinedAt: '',
@@ -29,7 +38,7 @@ const HomeScreen = () => {
     <View style={styles.center}>
         <View style={styles.row}>
             <View style={styles.avatarContainer}>
-                <Image source={require('../../assets/avatars/slime_purple.png')} alt='avatar' style={{height: '90%', width: '80%'}} />
+                <Image source={images.avatars.purpleAvatar} alt='avatar' style={{height: '90%', width: '80%'}} />
             </View>
             <View style={styles.usernameContainer}>
                 <Text style={{fontSize: 20}}>{userProfile.username}</Text>
@@ -38,7 +47,7 @@ const HomeScreen = () => {
         <View style={styles.credits}>
             <View style={{flexDirection: 'row'}}>
                 <Text style={{textAlign: 'center'}}>{userProfile.credits}</Text>
-                <Image source={require('../../assets/resources/manat.png')} alt='credits' style={{height: 20, width: 20}} />
+                <Image source={images.resources.credits} alt='credits' style={{height: 20, width: 20}} />
             </View>
         </View>
         <View style={{...styles.stack, height: 200}}></View>
