@@ -25,11 +25,9 @@ const HomeScreen = () => {
         fetchUserProfile()
     }, [])
 
-    
-
   return (
     <View style={styles.center}>
-        <View style={{...styles.stack, alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.row}>
             <View style={styles.avatarContainer}>
                 <Image source={require('../../assets/avatars/slime_purple.png')} alt='avatar' style={{height: '90%', width: '80%'}} />
             </View>
@@ -37,13 +35,18 @@ const HomeScreen = () => {
                 <Text style={{fontSize: 20}}>{userProfile.username}</Text>
             </View>
         </View>
-        <View style={styles.stack}></View>
+        <View style={styles.credits}>
+            <View style={{flexDirection: 'row'}}>
+                <Text style={{textAlign: 'center'}}>{userProfile.credits}</Text>
+                <Image source={require('../../assets/resources/manat.png')} alt='credits' style={{height: 20, width: 20}} />
+            </View>
+        </View>
         <View style={{...styles.stack, height: 200}}></View>
     </View>
   )
 }
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
     center: {
         flex: 1,
         paddingTop: 10,
@@ -74,5 +77,19 @@ const styles = StyleSheet.create({
         height: '100%'
     }
 })
+
+styles = {...styles,
+    credits: {
+        ...styles.stack, 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
+    row: {
+        ...styles.stack,
+        alignItems: 'center',
+        flexDirection: 'row',
+    }
+}
+
 
 export default HomeScreen
