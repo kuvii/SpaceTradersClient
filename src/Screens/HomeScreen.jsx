@@ -18,13 +18,14 @@ const HomeScreen = () => {
         const fetchUserProfile = async () => {
             const data = await getUserProfile()
             setUserProfile(data.user)
+            if (userProfile.username.length >= 18){
+                setUserProfile({...userProfile, username: (username.substring(0, 15) + '...')})
+            }
         }
         fetchUserProfile()
     }, [])
 
-    if (userProfile.username.length >= 18){
-        setUserProfile({...userProfile, username: (username.substring(0, 15) + '...')})
-    }
+    
 
   return (
     <View style={styles.center}>
@@ -32,7 +33,7 @@ const HomeScreen = () => {
             <View style={styles.avatarContainer}>
                 <Image source={require('../../assets/avatars/slime_purple.png')} alt='avatar' style={{height: '90%', width: '80%'}} />
             </View>
-            <View style={styles.username}>
+            <View style={styles.usernameContainer}>
                 <Text style={{fontSize: 20}}>{userProfile.username}</Text>
             </View>
         </View>
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         height: '90%',
     },
-    username: {
+    usernameContainer: {
         flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
