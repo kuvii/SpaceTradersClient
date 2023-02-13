@@ -86,23 +86,6 @@ let styles = StyleSheet.create({
         margin: 10,
         width: 300,
     },
-    avatarContainer: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: 'black',
-        borderColor: 'grey',
-        borderRadius: 100,
-        borderWidth: 2,
-        justifyContent: 'center',
-        marginLeft: 10,
-        height: '90%',
-    },
-    usernameContainer: {
-        flex: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%'
-    },
     itemStack: {
         alignItems: 'center',
         borderWidth: 0,
