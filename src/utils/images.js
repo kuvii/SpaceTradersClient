@@ -6,7 +6,7 @@ export const images = {
     },
     resources: {
         credits: require('../../assets/resources/manat.png'),
-        spaceships: require('../../assets/resources/spaceship.png'),
+        shipsCount: require('../../assets/resources/spaceship.png'),
         structures: require('../../assets/resources/structures.png'),
         joinedDate: require('../../assets/resources/calendar.png'),
     }
