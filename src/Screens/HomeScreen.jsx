@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { getUserProfile } from '../api/api'
 import { useEffect, useState } from 'react'
 
-import { images, getRandomAvatar } from '../utils/images'
+import { images } from '../utils/images'
 import Username from '../components/Username'
 
 const initUserProfile = {
