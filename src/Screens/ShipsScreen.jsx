@@ -34,14 +34,8 @@ const ShipsScreen = () => {
           data={spaceShipList}
           style= {{flex: 1, width: '70%'}}
           renderItem={({item}) => {
-            const {type, speed, weapons, maxCargo} = item
             return (
-              <View> 
-                <Text>{type}</Text>
-                <Text>{speed}</Text>
-                <Text>{weapons}</Text>
-                <Text>{maxCargo}</Text>
-              </View>
+              <ShipContainer item={item} />
               )
             }}
         />
