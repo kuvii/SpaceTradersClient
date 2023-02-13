@@ -3,6 +3,7 @@ import { getUserProfile } from '../api/api'
 import { useEffect, useState } from 'react'
 
 import { images, getRandomAvatar } from '../utils/images'
+import Username from '../components/Username'
 
 const initUserProfile = {
     profileImage: null,
@@ -35,14 +36,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.center}>
-        <View style={styles.row}>
-            <View style={styles.avatarContainer}>
-                <Image source={getRandomAvatar()} alt='avatar' style={{height: '90%', width: '80%'}} />
-            </View>
-            <View style={styles.usernameContainer}>
-                <Text style={{fontSize: 20}}>{userProfile.username}</Text>
-            </View>
-        </View>
+        <Username username={userProfile.username} />
         <View style={styles.credits}>
             <View style={{flexDirection: 'row'}}>
                 <Text style={{textAlign: 'center'}}>{userProfile.credits}</Text>
