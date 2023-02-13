@@ -4,13 +4,16 @@ import { getSpaceShips } from '../api/api'
 
 const ShipsScreen = () => {
 
-  const [spaceshipList, setSpaceShipList] = useState([])
+  const [spaceShipList, setSpaceShipList] = useState([])
 
   useEffect(() => {
     const fetchGetShips = async () => {
       try {
         const data = await getSpaceShips()
-        setSpaceShipList(data)
+        const shipList = data.shipListings
+        if(spaceShipList.length == 0){
+          setSpaceShipList(shipList)
+        }
       } catch (error) {
         console.error(error)
       }
