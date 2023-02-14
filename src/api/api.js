@@ -54,3 +54,16 @@ export const postLoan = async type => {
         console.error(error)
     }
 }
+
+export const postUser = async user => {
+    try {
+        const response = await fetch(endpoints.createUser(user), {
+            method: 'POST',
+        })
+        const data = response.json()
+
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
