@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react'
 import { getLoansAvailable } from '../api/api'
 import LoanContainer from '../components/LoanContainer'
 
-const LoansScreen = () => {
+const LoansScreen = ({token}) => {
 
   const [loansAvailable, setLoansAvailable] = useState([])
 
   useEffect(() => {
     const fetchGetLoansAvailable = async () => {
       try {
-        const data = await getLoansAvailable()
+        const data = await getLoansAvailable(token)
         const loans = data.loans
         if (loansAvailable.length == 0){
           setLoansAvailable(loans)

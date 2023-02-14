@@ -4,14 +4,14 @@ import { getSpaceShips } from '../api/api'
 import { FlatList } from 'react-native-gesture-handler'
 import ShipContainer from '../components/ShipContainer'
 
-const ShipsScreen = () => {
+const ShipsScreen = ({token}) => {
 
   const [spaceShipList, setSpaceShipList] = useState([])
 
   useEffect(() => {
     const fetchGetShips = async () => {
       try {
-        const data = await getSpaceShips()
+        const data = await getSpaceShips(token)
         const shipList = data.shipListings
         if(spaceShipList.length == 0){
           setSpaceShipList(shipList)
