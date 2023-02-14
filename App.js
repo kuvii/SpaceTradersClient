@@ -35,7 +35,6 @@ export default function App() {
 
   const logOut = (key) => {
     setUserToken('')
-    console.log('a')
     storeController.deleteToken(key)
   }
 
