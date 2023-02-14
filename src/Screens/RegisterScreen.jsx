@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { postUser } from '../api/api'
 
 import storeController from '../secure/controllers'
-import storeConstants from '../secure/constants'
+import constants from '../secure/constants'
 
 const RegisterScreen = ({navigation}) => {
 
@@ -16,7 +16,7 @@ const RegisterScreen = ({navigation}) => {
       const response = await postUser(user)
       if (response != undefined){
         if (response.token != undefined){
-          storeController.storeToken(storeConstants.STORED_TOKEN_KEY, response.token)
+          storeController.storeToken(constants.STORED_TOKEN_KEY, response.token)
           navigation.navigate('Login')
         } else {
           setIsIncorrect(true)
