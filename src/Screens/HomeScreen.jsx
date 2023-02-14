@@ -1,9 +1,12 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Button } from 'react-native'
 import { getUserProfile } from '../api/api'
 import { useEffect, useState } from 'react'
 
 import { images } from '../utils/images'
 import Username from '../components/Username'
+
+import storeControllers from '../secure/controllers'
+import constants from '../secure/constants'
 
 const initUserProfile = {
     profileImage: null,
@@ -14,7 +17,7 @@ const initUserProfile = {
     username: '',
 }
 
-const HomeScreen = () => {
+const HomeScreen = ({logOut}) => {
 
     const [userProfile, setUserProfile] = useState(initUserProfile)
 
@@ -68,6 +71,9 @@ const HomeScreen = () => {
                     <Text style={{fontSize: 20}}> {userProfile.joinedAt.substring(0, 10)} </Text>
                 </View>
             </View>
+        </View>
+        <View>
+            <Button title='Logout' onPress={() => logOut(constants.STORED_TOKEN_KEY)} />
         </View>
     </View>
   )
