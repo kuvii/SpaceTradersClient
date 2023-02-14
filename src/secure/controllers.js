@@ -17,8 +17,8 @@ const getValueFor = async (key) => {
     return ''
 }
 
-const deleteToken = (key) => {
-    storeServices.deleteToken(key)
+const deleteToken = async (key) => {
+    await storeServices.deleteToken(key)
     console.log('Token borrado')
 }
 
