@@ -79,8 +79,12 @@ export default function App() {
             <Drawer.Screen name="Home" >
               {() => <HomeScreen logOut={logOut} userProfile={userProfile}/>}
             </Drawer.Screen>
-            <Drawer.Screen name="Ships" component={ShipsScreen} />
-            <Drawer.Screen name="Loans" component={LoansScreen}/>
+            <Drawer.Screen name="Ships" >
+              {() => <ShipsScreen token={userToken} />}
+            </Drawer.Screen>
+            <Drawer.Screen name="Loans">
+              {() => <LoansScreen token={userToken} />}
+            </Drawer.Screen>
           </>
         }
       </Drawer.Navigator>
