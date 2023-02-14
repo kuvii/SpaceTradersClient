@@ -1,9 +1,9 @@
 import { endpoints } from "./endpoints"
 
-export const getUserProfile = async () => {
+export const getUserProfile = async (token) => {
     try {
         
-        const response = await fetch(endpoints.userProfile)
+        const response = await fetch(endpoints.userProfile(token))
         const data = await response.json()
 
         return data
