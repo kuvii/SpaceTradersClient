@@ -2,11 +2,15 @@ import { View, Text, StyleSheet, Image, Button } from 'react-native'
 
 import { images } from '../utils/images'
 import Username from '../components/Username'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const HomeScreen = ({logOut, userProfile}) => {
 
-    const [key, setKey] = useState(userProfile.username)
+    const [key, setKey] = useState('')
+
+    useEffect(() => {
+        setKey(userProfile.username)
+    })
 
   return (
     <View style={styles.center}>
