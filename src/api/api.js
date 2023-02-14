@@ -1,9 +1,22 @@
 import { endpoints } from "./endpoints"
 
-export const getUserProfile = async () => {
+export const getUserProfile = async token => {
     try {
         
-        const response = await fetch(endpoints.userProfile)
+        const response = await fetch(endpoints.userProfile + token)
+        const data = await response.json()
+        console.log(data)
+
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getSpaceShips = async token => {
+    try {
+        
+        const response = await fetch(endpoints.spaceshipList + token)
         const data = await response.json()
 
         return data
@@ -12,22 +25,10 @@ export const getUserProfile = async () => {
     }
 }
 
-export const getSpaceShips = async () => {
+export const getLoansAvailable = async token => {
     try {
         
-        const response = await fetch(endpoints.spaceshipList)
-        const data = await response.json()
-
-        return data
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-export const getLoansAvailable = async () => {
-    try {
-        
-        const response = await fetch(endpoints.loansList)
+        const response = await fetch(endpoints.loansList + token)
         const data = await response.json()
 
         return data
@@ -48,6 +49,19 @@ export const postLoan = async type => {
             })
         })
         const data = await response.json()
+
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const postUser = async user => {
+    try {
+        const response = await fetch(endpoints.createUser(user), {
+            method: 'POST',
+        })
+        const data = response.json()
 
         return data
     } catch (error) {

@@ -1,38 +1,10 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
-import { getUserProfile } from '../api/api'
-import { useEffect, useState } from 'react'
+import { View, Text, StyleSheet, Image, Button } from 'react-native'
 
 import { images } from '../utils/images'
 import Username from '../components/Username'
+import { useEffect, useState } from 'react'
 
-const initUserProfile = {
-    profileImage: null,
-    credits: 0,
-    joinedAt: '',
-    shipCount: 0,
-    structureCount: 0,
-    username: '',
-}
-
-const HomeScreen = () => {
-
-    const [userProfile, setUserProfile] = useState(initUserProfile)
-
-    useEffect(() => {
-        const fetchUserProfile = async () => {
-            try {
-                const data = await getUserProfile()
-                setUserProfile(data.user)
-                if (userProfile.username.length >= 18){
-                    setUserProfile({...userProfile, username: (username.substring(0, 15) + '...')})
-                }
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        
-        fetchUserProfile()
-    }, [])
+const HomeScreen = ({logOut, userProfile}) => {
 
   return (
     <View style={styles.center}>
@@ -68,6 +40,9 @@ const HomeScreen = () => {
                     <Text style={{fontSize: 20}}> {userProfile.joinedAt.substring(0, 10)} </Text>
                 </View>
             </View>
+        </View>
+        <View>
+            <Button title='Logout' onPress={() => logOut()} />
         </View>
     </View>
   )
