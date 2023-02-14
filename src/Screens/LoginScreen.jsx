@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
 import { useState } from 'react'
-import constants from '../secure/constants'
 
 const LoginScreen = ({onLogin}) => {
 
@@ -9,7 +8,7 @@ const LoginScreen = ({onLogin}) => {
 
   const handleSubmit = () => {
     if (inputToken.trim() != ''){
-      onLogin(constants.STORED_TOKEN_KEY, inputToken)
+      onLogin(inputToken)
     } else {
       setIsIncorrect(true)
       setTimeout(() => {
