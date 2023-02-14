@@ -3,7 +3,7 @@ import { endpoints } from "./endpoints"
 export const getUserProfile = async (token) => {
     try {
         
-        const response = await fetch(endpoints.userProfile(token))
+        const response = await fetch(endpoints.userProfile + token)
         const data = await response.json()
 
         return data
