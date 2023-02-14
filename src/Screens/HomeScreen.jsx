@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { images } from '../utils/images'
 import Username from '../components/Username'
 
-import storeControllers from '../secure/controllers'
 import constants from '../secure/constants'
 
 const initUserProfile = {
