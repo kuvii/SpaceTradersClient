@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
 import { useState } from 'react'
 import constants from '../secure/constants'
 
-const LoginScreen = ({onLogin, setUserToken}) => {
+const LoginScreen = ({onLogin}) => {
 
   const [inputToken, setInputToken] = useState('')
 
@@ -14,7 +14,7 @@ const LoginScreen = ({onLogin, setUserToken}) => {
       <View style={{flex: 3, height: '100%', width: '100%', alignItems: 'center'}}>
         <View style={styles.loginForm}>
           <TextInput value={inputToken} onChangeText={setInputToken} style={styles.inputToken}/>
-          <Button title='Login' onPress={() => onLogin(setUserToken, constants.STORED_TOKEN_KEY, inputToken)}/>
+          <Button title='Login' onPress={() => onLogin(constants.STORED_TOKEN_KEY, inputToken)}/>
         </View>
       </View>
     </View>
