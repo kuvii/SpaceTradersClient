@@ -8,17 +8,44 @@ import LoansScreen from './src/Screens/LoansScreen';
 import LoginScreen from './src/Screens/LoginScreen';
 import RegisterScreen from './src/Screens/RegisterScreen';
 
+import { useEffect, useState } from 'react';
+
+import storeController from './src/secure/controllers'
+import constants from './src/secure/constants'
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+
+  const [userToken, setUserToken] = useState('')
+
+  useEffect(() => {
+    const retrieveStoreToken = async () => {
+      const storedToken = await storeController.getValueFor(constants.STORED_TOKEN_KEY)
+      setUserToken(storedToken)
+    }
+
+    retrieveStoreToken()
+  }, [])
+
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={HomeScreen}/>
-        <Drawer.Screen name="Ships" component={ShipsScreen} />
-        <Drawer.Screen name="Loans" component={LoansScreen}/>
-        <Drawer.Screen name="Login" component={LoginScreen}/>
-        <Drawer.Screen name="Register" component={RegisterScreen}/>
+        {
+          userToken === '' ? 
+          <>
+            <Drawer.Screen name="Login">
+              {() => <LoginScreen onLogin={storeController.storeToken} setUserToken={setUserToken}/>}
+            </Drawer.Screen>
+            <Drawer.Screen name="Register" component={RegisterScreen}/>
+          </>
+          : 
+          <>
+            <Drawer.Screen name="Home" component={HomeScreen}/>
+            <Drawer.Screen name="Ships" component={ShipsScreen} />
+            <Drawer.Screen name="Loans" component={LoansScreen}/>
+          </>
+        }
       </Drawer.Navigator>
     </NavigationContainer>
   );
