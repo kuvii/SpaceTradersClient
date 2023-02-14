@@ -1,8 +1,7 @@
 import services from './services'
 import storeServices from './services'
 
-const storeToken = (setToken, key, token) => {
-    setToken(token)
+const storeToken = (key, token) => {
     storeServices.save(key, token)
     console.log(`Token guardado`)
 }
@@ -18,8 +17,7 @@ const getValueFor = async (key) => {
     return ''
 }
 
-const deleteToken = (setToken, key) => {
-    setToken('')
+const deleteToken = (key) => {
     storeServices.deleteToken(key)
     console.log('Token borrado')
 }
