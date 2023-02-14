@@ -5,4 +5,5 @@ export const endpoints = {
     serverStatus: 'https://api.spacetraders.io/game/status',
     spaceshipList: `https://api.spacetraders.io/systems/OE/ship-listings?token=${credentials.token}`,
     loansList: `https://api.spacetraders.io/types/loans?token=${credentials.token}`,
+    takeOutLoan: `https://api.spacetraders.io/my/loans/?token=${credentials.token}`
 }
