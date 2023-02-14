@@ -10,14 +10,17 @@ import RegisterScreen from './src/Screens/RegisterScreen';
 
 import { useEffect, useState } from 'react';
 
+import { getUserProfile } from './src/api/api';
 import storeController from './src/secure/controllers'
 import constants from './src/secure/constants'
+import { userModel } from './src/models/user';
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
 
   const [userToken, setUserToken] = useState('')
+  const [userProfile, setUserProfile] = useState(userModel)
 
   useEffect(() => {
     const retrieveStoreToken = async () => {
@@ -27,6 +30,20 @@ export default function App() {
 
     retrieveStoreToken()
   }, [])
+
+  const logIn = async (token) => {
+    try {
+      const data = await getUserProfile(token)
+      setUserProfile(data.user)
+      if (userProfile.username.length >= 18){
+        setUserProfile({...userProfile, username: (userProfile.username.substring(0, 15) + '...')})
+      }
+      setUserToken(token)
+      storeController.storeToken(userProfile.username, token)
+    } catch (error) {
+        console.error(error)
+    }
+  }
 
   const newUser = (key, token) => {
     setUserToken(token)
@@ -45,7 +62,7 @@ export default function App() {
           userToken === '' ? 
           <>
             <Drawer.Screen name="Login">
-              {() => <LoginScreen onLogin={newUser}/>}
+              {() => <LoginScreen onLogin={logIn}/>}
             </Drawer.Screen>
             <Drawer.Screen name="Register">
               {() => <RegisterScreen onRegister={newUser}/>}
@@ -54,7 +71,7 @@ export default function App() {
           : 
           <>
             <Drawer.Screen name="Home" >
-              {() => <HomeScreen logOut={logOut}/>}
+              {() => <HomeScreen logOut={logOut} userProfile={userProfile}/>}
             </Drawer.Screen>
             <Drawer.Screen name="Ships" component={ShipsScreen} />
             <Drawer.Screen name="Loans" component={LoansScreen}/>
