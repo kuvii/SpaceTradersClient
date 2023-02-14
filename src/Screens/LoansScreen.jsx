@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { useEffect, useState } from 'react'
 import { getLoansAvailable } from '../api/api'
+import LoanContainer from '../components/LoanContainer'
 
 const LoansScreen = () => {
 
@@ -23,13 +24,21 @@ const LoansScreen = () => {
 
   return (
     <View style={styles.centerItems}>
-      <View style={{flex: 1}}>
-        <View style={styles.centerItems}>
-          <Text style={{fontSize: 30}}>Loans Available</Text>
-        </View>
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={{fontSize: 30, marginVertical: 20}}>Loans Available</Text>
       </View>
-      <View style={{flex: 2}}>
-          <Text>List</Text>
+      <View style={{flex: 5, height: '100%', width: '100%'}}>
+        <View style={styles.centerItems}>
+        <FlatList 
+          data={loansAvailable}
+          style= {{flex: 1, width: '70%'}}
+          renderItem={({item}) => {
+            return (
+              <LoanContainer item={item}/>
+              )
+            }}
+        />
+        </View>
       </View>
     </View>
   )
