@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { useEffect, useState } from 'react'
 import { getLoansAvailable } from '../api/api'
 
@@ -27,5 +27,9 @@ const LoansScreen = () => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  
+})
 
 export default LoansScreen
