@@ -1,9 +1,20 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
 import { images } from '../utils/images'
+import { postLoan } from '../api/api'
 
 const LoanContainer = ({item}) => {
     const {amount, rate, termInDays, type} = item
+
+    const fetchPostTakeOutLoan = async type => {
+        try {
+            const result = await postLoan(type)
+            console.log(result)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    
     return (
         <View style={styles.loanContainer}>
             <View style={{flex: 1}}>
@@ -16,7 +27,7 @@ const LoanContainer = ({item}) => {
             <Text>Type: {type}</Text>
             </View>
             <View style={{flex: 1}}>
-                <Pressable style={[styles.button, styles.centerItems]} >
+                <Pressable style={[styles.button, styles.centerItems]} onPress={() => fetchPostTakeOutLoan(type)} >
                     <Text style={{textAlign: 'center', color: 'white'}}>Aceptar {'\n'}Préstamo</Text>
                 </Pressable>
             </View>
