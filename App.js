@@ -28,9 +28,15 @@ export default function App() {
     retrieveStoreToken()
   }, [])
 
-  const onLogin = (key, token) => {
+  const newUser = (key, token) => {
     setUserToken(token)
     storeController.storeToken(key, token)
+  }
+
+  const logOut = (key) => {
+    setUserToken('')
+    console.log('a')
+    storeController.deleteToken(key)
   }
 
   return (
@@ -40,13 +46,17 @@ export default function App() {
           userToken === '' ? 
           <>
             <Drawer.Screen name="Login">
-              {() => <LoginScreen onLogin={onLogin}/>}
+              {() => <LoginScreen onLogin={newUser}/>}
             </Drawer.Screen>
-            <Drawer.Screen name="Register" component={RegisterScreen}/>
+            <Drawer.Screen name="Register">
+              {() => <RegisterScreen onRegister={newUser}/>}
+            </Drawer.Screen>
           </>
           : 
           <>
-            <Drawer.Screen name="Home" component={HomeScreen}/>
+            <Drawer.Screen name="Home" >
+              {() => <HomeScreen logOut={logOut}/>}
+            </Drawer.Screen>
             <Drawer.Screen name="Ships" component={ShipsScreen} />
             <Drawer.Screen name="Loans" component={LoansScreen}/>
           </>
