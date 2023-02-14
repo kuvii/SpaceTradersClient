@@ -9,12 +9,11 @@ const LoanContainer = ({item}) => {
     const fetchPostTakeOutLoan = async type => {
         try {
             const result = await postLoan(type)
-            console.log(result)
         } catch (error) {
             console.error(error)
         }
     }
-    
+
     return (
         <View style={styles.loanContainer}>
             <View style={{flex: 1}}>
