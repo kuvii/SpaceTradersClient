@@ -6,12 +6,6 @@ import { useEffect, useState } from 'react'
 
 const HomeScreen = ({logOut, userProfile}) => {
 
-    const [key, setKey] = useState('')
-
-    useEffect(() => {
-        setKey(userProfile.username)
-    })
-
   return (
     <View style={styles.center}>
         <Username username={userProfile.username} />
@@ -48,7 +42,7 @@ const HomeScreen = ({logOut, userProfile}) => {
             </View>
         </View>
         <View>
-            <Button title='Logout' onPress={() => logOut(key)} />
+            <Button title='Logout' onPress={() => logOut()} />
         </View>
     </View>
   )
