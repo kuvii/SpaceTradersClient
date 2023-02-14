@@ -46,7 +46,7 @@ const HomeScreen = () => {
         <View style={{...styles.stack, height: 200}}>
             <View style={styles.itemStack}>
                 <View style={{...styles.itemStack, flex: 1}}>
-                    <Image source={images.resources.spaceships} alt='shipCount' style={{height: 30, width: 30}} />
+                    <Image source={images.resources.shipsCount} alt='shipCount' style={{height: 30, width: 30}} />
                 </View>
                 <View style={{flex: 1}}>
                     <Text style={{fontSize: 20}}> {userProfile.shipCount} </Text>

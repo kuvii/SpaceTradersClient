@@ -11,3 +11,15 @@ export const getUserProfile = async () => {
         console.error(error)
     }
 }
+
+export const getSpaceShips = async () => {
+    try {
+        
+        const response = await fetch(endpoints.spaceshipList)
+        const data = await response.json()
+
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
