@@ -26,7 +26,7 @@ const HomeScreen = ({logOut}) => {
                 const data = await getUserProfile()
                 setUserProfile(data.user)
                 if (userProfile.username.length >= 18){
-                    setUserProfile({...userProfile, username: (username.substring(0, 15) + '...')})
+                    setUserProfile({...userProfile, username: (userProfile.username.substring(0, 15) + '...')})
                 }
             } catch (error) {
                 console.error(error)
