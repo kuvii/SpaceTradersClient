@@ -24,8 +24,12 @@ export default function App() {
 
   useEffect(() => {
     const retrieveStoreToken = async () => {
-      let storedToken = await storeController.getValueFor(constants.STORED_TOKEN_KEY)
+      const storedToken = await storeController.getValueFor(constants.STORED_TOKEN_KEY)
       setUserToken(storedToken)
+      if (storedToken != ''){
+        const data = await getUserProfile(storedToken)
+        setUserProfile(data.user)
+      }
     }
 
     retrieveStoreToken()
