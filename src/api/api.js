@@ -1,10 +1,11 @@
 import { endpoints } from "./endpoints"
 
-export const getUserProfile = async (token) => {
+export const getUserProfile = async token => {
     try {
         
         const response = await fetch(endpoints.userProfile + token)
         const data = await response.json()
+        console.log(data)
 
         return data
     } catch (error) {
@@ -12,10 +13,10 @@ export const getUserProfile = async (token) => {
     }
 }
 
-export const getSpaceShips = async () => {
+export const getSpaceShips = async token => {
     try {
         
-        const response = await fetch(endpoints.spaceshipList)
+        const response = await fetch(endpoints.spaceshipList + token)
         const data = await response.json()
 
         return data
@@ -24,10 +25,10 @@ export const getSpaceShips = async () => {
     }
 }
 
-export const getLoansAvailable = async () => {
+export const getLoansAvailable = async token => {
     try {
         
-        const response = await fetch(endpoints.loansList)
+        const response = await fetch(endpoints.loansList + token)
         const data = await response.json()
 
         return data
