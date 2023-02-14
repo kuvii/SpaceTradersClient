@@ -35,7 +35,7 @@ export default function App() {
           userToken === '' ? 
           <>
             <Drawer.Screen name="Login">
-              {() => <LoginScreen onLogin={storeController.storeToken} setUserToken={setUserToken}/>}
+              {() => <LoginScreen onLogin={storeController.storeToken}/>}
             </Drawer.Screen>
             <Drawer.Screen name="Register" component={RegisterScreen}/>
           </>
