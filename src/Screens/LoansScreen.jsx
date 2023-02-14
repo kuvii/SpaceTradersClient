@@ -22,14 +22,25 @@ const LoansScreen = () => {
   }, [])
 
   return (
-    <View>
-      <Text>LoansScreen</Text>
+    <View style={styles.centerItems}>
+      <View style={{flex: 1}}>
+        <View style={styles.centerItems}>
+          <Text style={{fontSize: 30}}>Loans Available</Text>
+        </View>
+      </View>
+      <View style={{flex: 2}}>
+          <Text>List</Text>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  
+  centerItems: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 })
 
 export default LoansScreen
