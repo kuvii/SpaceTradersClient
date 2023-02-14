@@ -28,6 +28,11 @@ export default function App() {
     retrieveStoreToken()
   }, [])
 
+  const onLogin = (key, token) => {
+    setUserToken(token)
+    storeController.storeToken(key, token)
+  }
+
   return (
     <NavigationContainer>
       <Drawer.Navigator>
@@ -35,7 +40,7 @@ export default function App() {
           userToken === '' ? 
           <>
             <Drawer.Screen name="Login">
-              {() => <LoginScreen onLogin={storeController.storeToken}/>}
+              {() => <LoginScreen onLogin={onLogin}/>}
             </Drawer.Screen>
             <Drawer.Screen name="Register" component={RegisterScreen}/>
           </>
