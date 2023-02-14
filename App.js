@@ -24,7 +24,7 @@ export default function App() {
 
   useEffect(() => {
     const retrieveStoreToken = async () => {
-      const storedToken = await storeController.getValueFor(constants.STORED_TOKEN_KEY)
+      let storedToken = await storeController.getValueFor(constants.STORED_TOKEN_KEY)
       setUserToken(storedToken)
     }
 
@@ -35,24 +35,26 @@ export default function App() {
     try {
       const data = await getUserProfile(token)
       setUserProfile(data.user)
-      if (userProfile.username.length >= 18){
-        setUserProfile({...userProfile, username: (userProfile.username.substring(0, 15) + '...')})
+      if(data.user != undefined){
+        if (userProfile.username.length >= 18){
+          setUserProfile({...userProfile, username: (userProfile.username.substring(0, 15) + '...')})
+        }
+        setUserToken(token)
+        storeController.storeToken(constants.STORED_TOKEN_KEY, token)
       }
-      setUserToken(token)
-      storeController.storeToken(userProfile.username, token)
     } catch (error) {
         console.error(error)
     }
   }
 
-  const newUser = (key, token) => {
+  const newUser = (token) => {
     setUserToken(token)
-    storeController.storeToken(key, token)
+    storeController.storeToken(constants.STORED_TOKEN_KEY, token)
   }
 
-  const logOut = (key) => {
+  const logOut = () => {
     setUserToken('')
-    storeController.deleteToken(key)
+    storeController.deleteToken(constants.STORED_TOKEN_KEY)
   }
 
   return (
