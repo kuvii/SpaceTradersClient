@@ -5,7 +5,6 @@ export const getUserProfile = async token => {
         
         const response = await fetch(endpoints.userProfile + token)
         const data = await response.json()
-        console.log(data)
 
         return data
     } catch (error) {
