@@ -3,12 +3,13 @@ import React from 'react'
 import { images } from '../utils/images'
 import { postLoan } from '../api/api'
 
-const LoanContainer = ({item}) => {
+const LoanContainer = ({item, token}) => {
     const {amount, rate, termInDays, type} = item
 
-    const fetchPostTakeOutLoan = async type => {
+    const fetchPostTakeOutLoan = async (type) => {
         try {
-            const result = await postLoan(type)
+            const result = await postLoan(token, type)
+            console.log(result)
         } catch (error) {
             console.error(error)
         }
