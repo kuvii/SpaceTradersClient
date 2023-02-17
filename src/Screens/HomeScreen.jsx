@@ -7,7 +7,7 @@ const HomeScreen = ({logOut, userProfile}) => {
 
   return (
     
-      <ImageBackground source={images.places.home} style={{height: '100%', width: '100%'}}>
+      <ImageBackground source={images.places.home} resizeMode='cover' style={{height: '100%', width: '100%'}}>
             <View style={styles.center}>
             <Username username={userProfile.username} />
             <View style={styles.credits}>
