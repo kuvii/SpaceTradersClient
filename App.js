@@ -2,6 +2,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import { RootSiblingParent } from 'react-native-root-siblings';
+
 import HomeScreen from './src/Screens/HomeScreen';
 import ShipsScreen from './src/Screens/ShipsScreen';
 import LoansScreen from './src/Screens/LoansScreen';
@@ -62,32 +64,34 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        {
-          userToken === '' ? 
-          <>
-            <Drawer.Screen name="Login">
-              {() => <LoginScreen onLogin={logIn}/>}
-            </Drawer.Screen>
-            <Drawer.Screen name="Register">
-              {() => <RegisterScreen onRegister={newUser}/>}
-            </Drawer.Screen>
-          </>
-          : 
-          <>
-            <Drawer.Screen name="Home" >
-              {() => <HomeScreen logOut={logOut} userProfile={userProfile}/>}
-            </Drawer.Screen>
-            <Drawer.Screen name="Ships" >
-              {() => <ShipsScreen token={userToken} />}
-            </Drawer.Screen>
-            <Drawer.Screen name="Loans">
-              {() => <LoansScreen token={userToken} />}
-            </Drawer.Screen>
-          </>
-        }
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <RootSiblingParent>
+      <NavigationContainer>
+        <Drawer.Navigator>
+          {
+            userToken === '' ? 
+            <>
+              <Drawer.Screen name="Login">
+                {() => <LoginScreen onLogin={logIn}/>}
+              </Drawer.Screen>
+              <Drawer.Screen name="Register">
+                {() => <RegisterScreen onRegister={newUser}/>}
+              </Drawer.Screen>
+            </>
+            : 
+            <>
+              <Drawer.Screen name="Home" >
+                {() => <HomeScreen logOut={logOut} userProfile={userProfile}/>}
+              </Drawer.Screen>
+              <Drawer.Screen name="Ships" >
+                {() => <ShipsScreen token={userToken} />}
+              </Drawer.Screen>
+              <Drawer.Screen name="Loans">
+                {() => <LoansScreen token={userToken} />}
+              </Drawer.Screen>
+            </>
+          }
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </RootSiblingParent>
   );
 }
