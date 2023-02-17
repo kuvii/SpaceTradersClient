@@ -22,6 +22,9 @@ export const images = {
         HMMKI: require('../../assets/spaceships/hmmki.png'),
         HMMKIII: require('../../assets/spaceships/hmmkiii.png'),
         TDMKI: require('../../assets/spaceships/tdmki.png'),
+    },
+    places: {
+        home: require('../../assets/places/home.jpg'),
     }
 }
 
