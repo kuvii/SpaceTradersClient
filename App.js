@@ -66,7 +66,7 @@ export default function App() {
   return (
     <RootSiblingParent>
       <NavigationContainer>
-        <Drawer.Navigator>
+        <Drawer.Navigator screenOptions={{headerShown: false}}>
           {
             userToken === '' ? 
             <>
