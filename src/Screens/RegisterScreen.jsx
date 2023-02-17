@@ -7,7 +7,7 @@ import { postUser } from '../api/api'
 import storeController from '../secure/controllers'
 import constants from '../secure/constants'
 import { useNavigation } from '@react-navigation/native'
-
+import Toast from 'react-native-root-toast'
 
 const RegisterScreen = ({}) => {
 
@@ -23,6 +23,7 @@ const RegisterScreen = ({}) => {
         if (response.token != undefined){
           storeController.storeToken(constants.STORED_TOKEN_KEY, response.token)
           Clipboard.setStringAsync(response.token)
+          Toast.show('Copied to clipboard: ' + response.token, {duration: Toast.durations.SHORT})
           navigation.navigate('Login')
         } else {
           setIsIncorrect(true)
