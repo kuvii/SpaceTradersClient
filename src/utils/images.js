@@ -24,7 +24,7 @@ export const images = {
         TDMKI: require('../../assets/spaceships/tdmki.png'),
     },
     places: {
-        home: require('../../assets/places/home.jpg'),
+        home: require('../../assets/places/ship.jpg'),
     }
 }
 
