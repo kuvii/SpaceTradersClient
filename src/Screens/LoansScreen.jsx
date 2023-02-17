@@ -34,7 +34,7 @@ const LoansScreen = ({token}) => {
           style= {{flex: 1, width: '70%'}}
           renderItem={({item}) => {
             return (
-              <LoanContainer item={item}/>
+              <LoanContainer item={item} token={token}/>
               )
             }}
         />
