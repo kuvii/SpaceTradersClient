@@ -36,9 +36,9 @@ export const getLoansAvailable = async token => {
     }
 }
 
-export const postLoan = async type => {
+export const postLoan = async (token, type) => {
     try {
-        const response = await fetch(endpoints.takeOutLoan, {
+        const response = await fetch(endpoints.takeOutLoan + token, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
