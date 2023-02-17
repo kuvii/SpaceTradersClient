@@ -1,15 +1,20 @@
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
+import * as Clipboard from 'expo-clipboard'
 import { postUser } from '../api/api'
 
 import storeController from '../secure/controllers'
 import constants from '../secure/constants'
+import { useNavigation } from '@react-navigation/native'
 
-const RegisterScreen = ({navigation}) => {
+
+const RegisterScreen = ({}) => {
 
   const [inputUser, setInputUser] = useState('')
   const [isIncorrect, setIsIncorrect] = useState(false)
+  const navigation = useNavigation()
+
 
   const fetchPostUser = async user => {
     try {
@@ -17,6 +22,7 @@ const RegisterScreen = ({navigation}) => {
       if (response != undefined){
         if (response.token != undefined){
           storeController.storeToken(constants.STORED_TOKEN_KEY, response.token)
+          Clipboard.setStringAsync(response.token)
           navigation.navigate('Login')
         } else {
           setIsIncorrect(true)
