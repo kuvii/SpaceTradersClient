@@ -16,6 +16,7 @@ import { getUserProfile } from './src/api/api';
 import storeController from './src/secure/controllers'
 import constants from './src/secure/constants'
 import { userModel } from './src/models/user';
+import { StatusBar } from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -65,6 +66,7 @@ export default function App() {
 
   return (
     <RootSiblingParent>
+      <StatusBar />
       <NavigationContainer>
         <Drawer.Navigator screenOptions={{headerShown: false}}>
           {
