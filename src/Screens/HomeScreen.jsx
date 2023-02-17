@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Image, Button, ImageBackground } from 'react-na
 
 import { images } from '../utils/images'
 import Username from '../components/Username'
-import { useEffect, useState } from 'react'
 
 const HomeScreen = ({logOut, userProfile}) => {
 
