@@ -17,6 +17,7 @@ import storeController from './src/secure/controllers'
 import constants from './src/secure/constants'
 import { userModel } from './src/models/user';
 import { StatusBar } from 'react-native';
+import WelcomeScreen from './src/Screens/WelcomeScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -74,6 +75,7 @@ export default function App() {
           {
             userToken === '' ? 
             <>
+              <Drawer.Screen name='Welcome' component={WelcomeScreen}/>
               <Drawer.Screen name="Login">
                 {() => <LoginScreen onLogin={logIn}/>}
               </Drawer.Screen>
