@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     loanContainer: {
-      backgroundColor: 'lightgrey',
-      borderColor: 'grey',
+      backgroundColor: 'rgba(0, 255, 255, 0.5)',
+      borderColor: 'rgb(140, 255, 255)',
       borderRadius: 5,
       borderWidth: 1,
       flex: 1,
