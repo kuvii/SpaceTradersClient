@@ -31,7 +31,8 @@ let styles = StyleSheet.create({
     height: '100%'
   },
   stack: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: 'rgba(0, 255, 255, 0.2)',
+    borderColor: 'rgb(140, 255, 255)',
     borderWidth: 1,
     height: 100,
     margin: 10,
