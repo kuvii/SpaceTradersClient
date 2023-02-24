@@ -39,9 +39,13 @@ const RegisterScreen = ({}) => {
   }
 
   const handleSubmit = () => {
-    if (inputUser.trim() != '') {
-      fetchPostUser(inputUser)
+    if (inputUser.trim() == '') {
+      setIsIncorrect(true)
+      setTimeout(() =>{
+        setIsIncorrect(false)
+      }, 2000)
     }
+    fetchPostUser(inputUser)
   }
 
   return (
