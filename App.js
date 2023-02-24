@@ -24,8 +24,10 @@ export default function App() {
 
   const [userToken, setUserToken] = useState('')
   const [userProfile, setUserProfile] = useState(userModel)
+  const [dataChanged, setDataChanged] = useState(false)
 
   useEffect(() => {
+    setDataChanged(false)
     const retrieveStoreToken = async () => {
       const storedToken = await storeController.getValueFor(constants.STORED_TOKEN_KEY)
       setUserToken(storedToken)
@@ -36,7 +38,7 @@ export default function App() {
     }
 
     retrieveStoreToken()
-  }, [])
+  }, [dataChanged])
 
   const logIn = async (token) => {
     try {
@@ -88,7 +90,7 @@ export default function App() {
                 {() => <ShipsScreen token={userToken} />}
               </Drawer.Screen>
               <Drawer.Screen name="Loans">
-                {() => <LoansScreen token={userToken} />}
+                {() => <LoansScreen token={userToken} setDataChanged={setDataChanged}/>}
               </Drawer.Screen>
             </>
           }
