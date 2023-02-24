@@ -26,7 +26,8 @@ export const images = {
     places: {
         home: require('../../assets/places/ship.jpg'),
         shop: require('../../assets/places/shop.jpeg'),
-        bank: require('../../assets/places/bank.jpg')
+        bank: require('../../assets/places/bank.jpg'),
+        login: require('../../assets/places/login.jpg'),
     }
 }
 
