@@ -4,7 +4,7 @@ import { getLoansAvailable } from '../api/api'
 import LoanContainer from '../components/LoanContainer'
 import { images } from '../utils/images'
 
-const LoansScreen = ({token}) => {
+const LoansScreen = ({token, setDataChanged}) => {
 
   const [loansAvailable, setLoansAvailable] = useState([])
 
@@ -36,7 +36,7 @@ const LoansScreen = ({token}) => {
             style= {{flex: 1, width: '70%'}}
             renderItem={({item}) => {
               return (
-                <LoanContainer item={item} token={token}/>
+                <LoanContainer item={item} token={token} setDataChanged={setDataChanged}/>
                 )
               }}
           />
