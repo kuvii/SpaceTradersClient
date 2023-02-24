@@ -6,13 +6,17 @@ const Username = ({username}) => {
   return (
     <View style={styles.row}>
       <View style={{flex: 1}}>
-          <Image source={getRandomAvatar()} alt='avatar' style={{
-            backgroundColor: 'black', 
-            borderRadius: 20,
+          <Image source={getRandomAvatar()} alt='avatar' style={
+            {
+            backgroundColor: 'rgba(0, 22, 255, 0.5)',
+            borderColor: 'rgb(113, 171, 255)',
+            borderWidth: 1,
+            borderRadius: 5,
             height: '90%', 
             marginLeft: 5, 
             width: '80%', 
-            }} />
+            }
+          } />
       </View>
       <View style={{flex: 1}}>
         <View style={styles.usernameContainer}>
@@ -38,7 +42,16 @@ let styles = StyleSheet.create({
     height: 100,
     margin: 10,
     width: 300,
-  }
+  },
+  avatarImage: {
+    backgroundColor: 'rgba(0, 22, 255, 0.5)',
+    borderColor: 'rgb(113, 171, 255)',
+    borderWidth: 1,
+    borderRadius: 5,
+    height: '90%', 
+    marginLeft: 5, 
+    width: '80%', 
+    }
 })
 
 styles = {
