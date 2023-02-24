@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Button, ImageBackground } from 'react-native'
 import { useState } from 'react'
+import { images } from '../utils/images'
 
 const LoginScreen = ({onLogin}) => {
 
@@ -18,18 +19,20 @@ const LoginScreen = ({onLogin}) => {
   }
 
   return (
-    <View style={styles.centerItems}>
-      <View style={{flex: 1, justifyContent: 'center'}}>
-        <Text style={{fontSize: 30, marginVertical: 20}}>Login</Text>
-      </View>
-      <View style={{flex: 3, height: '100%', width: '100%', alignItems: 'center'}}>
-        <View style={styles.loginForm}>
-          <TextInput value={inputToken} onChangeText={setInputToken} placeholder='Token' style={isIncorrect ? styles.incorrectInputToken : styles.correctInputToken}/>
-          {isIncorrect ? <Text style={{color: 'red'}}>Incorrect Token</Text> : <></>}
-          <Button title='Login' onPress={handleSubmit}/>
+    <ImageBackground source={images.places.login} resizeMode='cover' style={{height: '100%', width: '100%'}}>
+      <View style={styles.centerItems}>
+        <View style={{flex: 1, justifyContent: 'center'}}>
+          <Text style={{fontSize: 30, marginVertical: 20, color: 'aqua'}}>Login</Text>
+        </View>
+        <View style={{flex: 3, height: '100%', width: '100%', alignItems: 'center'}}>
+          <View style={styles.loginForm}>
+            <TextInput value={inputToken} onChangeText={setInputToken} placeholder='Token' placeholderTextColor={isIncorrect ? 'red' : 'aqua'} style={isIncorrect ? styles.incorrectInputToken : styles.correctInputToken}/>
+            {isIncorrect ? <Text style={{color: 'red'}}>Incorrect Token</Text> : <></>}
+            <Button title='Login' onPress={handleSubmit}/>
+          </View>
         </View>
       </View>
-    </View>
+    </ImageBackground>
   )
 }
 
@@ -40,15 +43,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   correctInputToken: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: 'rgba(0, 22, 255, 0.5)',
+    borderColor: 'rgb(113, 171, 255)',
+    borderWidth: 1,
+    borderRadius: 5,
+    color: 'aqua',
     width: 260,
     paddingHorizontal: 5,
     margin: 5,
   },
   incorrectInputToken: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: 'rgba(0, 22, 255, 0.5)',
     borderColor: 'red',
+    borderRadius: 5,
     borderWidth: 1,
+    color: 'red',
     width: 260,
     paddingHorizontal: 5,
     margin: 5,

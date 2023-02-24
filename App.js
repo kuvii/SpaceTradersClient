@@ -2,6 +2,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import { RootSiblingParent } from 'react-native-root-siblings';
+
 import HomeScreen from './src/Screens/HomeScreen';
 import ShipsScreen from './src/Screens/ShipsScreen';
 import LoansScreen from './src/Screens/LoansScreen';
@@ -14,6 +16,8 @@ import { getUserProfile } from './src/api/api';
 import storeController from './src/secure/controllers'
 import constants from './src/secure/constants'
 import { userModel } from './src/models/user';
+import { StatusBar } from 'react-native';
+import WelcomeScreen from './src/Screens/WelcomeScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,8 +25,10 @@ export default function App() {
 
   const [userToken, setUserToken] = useState('')
   const [userProfile, setUserProfile] = useState(userModel)
+  const [dataChanged, setDataChanged] = useState(false)
 
   useEffect(() => {
+    setDataChanged(false)
     const retrieveStoreToken = async () => {
       const storedToken = await storeController.getValueFor(constants.STORED_TOKEN_KEY)
       setUserToken(storedToken)
@@ -33,7 +39,7 @@ export default function App() {
     }
 
     retrieveStoreToken()
-  }, [])
+  }, [dataChanged])
 
   const logIn = async (token) => {
     try {
@@ -62,32 +68,36 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        {
-          userToken === '' ? 
-          <>
-            <Drawer.Screen name="Login">
-              {() => <LoginScreen onLogin={logIn}/>}
-            </Drawer.Screen>
-            <Drawer.Screen name="Register">
-              {() => <RegisterScreen onRegister={newUser}/>}
-            </Drawer.Screen>
-          </>
-          : 
-          <>
-            <Drawer.Screen name="Home" >
-              {() => <HomeScreen logOut={logOut} userProfile={userProfile}/>}
-            </Drawer.Screen>
-            <Drawer.Screen name="Ships" >
-              {() => <ShipsScreen token={userToken} />}
-            </Drawer.Screen>
-            <Drawer.Screen name="Loans">
-              {() => <LoansScreen token={userToken} />}
-            </Drawer.Screen>
-          </>
-        }
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <RootSiblingParent>
+      <StatusBar />
+      <NavigationContainer>
+        <Drawer.Navigator screenOptions={{headerShown: false}}>
+          {
+            userToken === '' ? 
+            <>
+              <Drawer.Screen name='Welcome' component={WelcomeScreen}/>
+              <Drawer.Screen name="Login">
+                {() => <LoginScreen onLogin={logIn}/>}
+              </Drawer.Screen>
+              <Drawer.Screen name="Register">
+                {() => <RegisterScreen onRegister={newUser}/>}
+              </Drawer.Screen>
+            </>
+            : 
+            <>
+              <Drawer.Screen name="Home" >
+                {() => <HomeScreen logOut={logOut} userProfile={userProfile}/>}
+              </Drawer.Screen>
+              <Drawer.Screen name="Ships" >
+                {() => <ShipsScreen token={userToken} />}
+              </Drawer.Screen>
+              <Drawer.Screen name="Loans">
+                {() => <LoansScreen token={userToken} setDataChanged={setDataChanged}/>}
+              </Drawer.Screen>
+            </>
+          }
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </RootSiblingParent>
   );
 }

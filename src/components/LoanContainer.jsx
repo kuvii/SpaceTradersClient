@@ -1,14 +1,27 @@
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Image, Pressable, Alert } from 'react-native'
 import React from 'react'
 import { images } from '../utils/images'
 import { postLoan } from '../api/api'
+import { useNavigation } from '@react-navigation/core'
+import Toast from 'react-native-root-toast'
 
-const LoanContainer = ({item}) => {
+const LoanContainer = ({item, token, setDataChanged}) => {
+    const navigation = useNavigation()
+
     const {amount, rate, termInDays, type} = item
 
-    const fetchPostTakeOutLoan = async type => {
+    const fetchPostTakeOutLoan = async (type) => {
         try {
-            const result = await postLoan(type)
+            const result = await postLoan(token, type)
+            console.log(result)
+            if (result?.error) {
+                Toast.show('Already took a loan')
+                return
+            }
+            setDataChanged(true)
+            setTimeout(() => {
+                navigation.navigate('Home')
+            }, 2000)
         } catch (error) {
             console.error(error)
         }
@@ -41,8 +54,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     loanContainer: {
-      backgroundColor: 'lightgrey',
-      borderColor: 'grey',
+      backgroundColor: 'rgba(0, 255, 255, 0.5)',
+      borderColor: 'rgb(140, 255, 255)',
       borderRadius: 5,
       borderWidth: 1,
       flex: 1,
