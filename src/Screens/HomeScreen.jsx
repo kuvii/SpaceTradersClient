@@ -57,7 +57,9 @@ let styles = StyleSheet.create({
         alignItems: 'center',
     },
     stack: {
-        backgroundColor: 'lightgrey',
+        backgroundColor: 'rgba(0, 255, 255, 0.5)',
+        borderColor: 'rgb(140, 255, 255)',
+        borderRadius: 5,
         borderWidth: 1,
         height: 100,
         margin: 10,
